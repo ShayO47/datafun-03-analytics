@@ -51,6 +51,20 @@ to see how the same workflow is applied to different data.
 When you take ownership of the project,
 adapt the processing pipelines to generate new analytics.
 
+## First Technical Modification
+
+I changed the CSV analysis from `Ladder score` to
+`Standard error of ladder score`.
+
+I made this change because the standard error shows the uncertainty around
+each country's estimated happiness score. I expected the values to be low
+for most countries but to vary across the dataset.
+
+After running the project, I observed 153 country records. The mean standard
+error was 0.05, with values ranging from 0.03 to 0.12. This suggests that
+the happiness estimates were generally fairly precise, although some country
+estimates had more uncertainty than others.
+
 ## Important Folders and Files
 
 - **data/raw/** - raw input data files

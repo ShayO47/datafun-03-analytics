@@ -93,11 +93,18 @@ and write the statistics to a text file.
 """
 
 CSV_INPUT: Final[Path] = RAW_DIR / "2020_happiness.csv"
-CSV_OUTPUT: Final[Path] = PROCESSED_DIR / "csv_ladder_score_stats.txt"
-CSV_COLUMN: Final[str] = "Ladder score"  # CUSTOM
+CSV_OUTPUT: Final[Path] = PROCESSED_DIR / "csv_standard_error_ladder_score_stats.txt"
+CSV_COLUMN: Final[str] = "Standard error of ladder score"  # CUSTOM
 WHY_CSV_COLUMN: Final[str] = r"""
-The ladder score is the survey's overall happiness measure,
-so its distribution is the natural first summary of this dataset.
+The standard error of ladder score indicates the uncertainty around each
+country's estimated happiness score. Summarizing this column helps show
+how precise the survey estimates are across countries.
+"""
+CSV_ANALYST_INSIGHT: Final[str] = r"""
+The average standard error of ladder score was 0.05 across 153 countries.
+This suggests that the happiness estimates were generally fairly precise,
+although some countries had higher uncertainty, with a maximum standard
+error of 0.12.
 """
 
 # === JSON: COUNT RECORDS BY A CATEGORY ===
@@ -208,6 +215,7 @@ def main() -> None:
     LOG.info(f"Pipeline: {CSV_PIPELINE_DESCRIPTION}")
     LOG.info(f"Column: {CSV_COLUMN}")
     LOG.info(f"Why: {WHY_CSV_COLUMN}")
+    LOG.info(f"Analyst insight: {CSV_ANALYST_INSIGHT}")
     run_etvl_csv(
         input_file=CSV_INPUT,
         output_file=CSV_OUTPUT,

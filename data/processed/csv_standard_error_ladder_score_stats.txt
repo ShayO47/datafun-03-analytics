@@ -1,0 +1,6 @@
+Statistics for column: Standard error of ladder score
+Count: 153
+Minimum: 0.03
+Maximum: 0.12
+Mean: 0.05
+Standard Deviation: 0.02
