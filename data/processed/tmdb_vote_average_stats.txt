@@ -1,0 +1,6 @@
+Statistics for column: vote_average
+Count: 10000
+Minimum: 0.00
+Maximum: 10.00
+Mean: 6.31
+Standard Deviation: 1.35

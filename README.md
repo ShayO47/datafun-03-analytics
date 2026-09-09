@@ -65,6 +65,33 @@ error was 0.05, with values ranging from 0.03 to 0.12. This suggests that
 the happiness estimates were generally fairly precise, although some country
 estimates had more uncertainty than others.
 
+## My Applied Analysis: TMDb Movie Ratings
+
+### Question
+
+What do average audience ratings look like for movies in the TMDb dataset?
+
+### Dataset
+
+I used the TMDb Top 10000 Popular Movies Dataset from Kaggle. The dataset
+contains 10,000 movies with titles, overviews, original language, vote counts,
+and average audience ratings.
+
+### What I Changed
+
+I replaced the original world-happiness CSV analysis with a TMDb movie-data
+analysis. I changed the input file to `tmdb_movies.csv`, selected the
+`vote_average` column, and saved the results to
+`tmdb_vote_average_stats.txt`.
+
+### Results and Interpretation
+
+The mean movie rating was 6.31 out of 10, with a standard deviation of 1.35.
+Ratings ranged from 0.00 to 10.00. This shows that ratings varied across the
+movie dataset, while the average rating was above the midpoint of the
+10-point scale. Because the source focuses on popular movies, these results
+may not represent all movies in TMDb.
+
 ## Important Folders and Files
 
 - **data/raw/** - raw input data files

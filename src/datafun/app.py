@@ -19,19 +19,19 @@ This project illustrates how the workflow is similar
 even when the data is very different.
 It uses four datasets, each in a different file format.
 
-- CSV:  world happiness scores
+- CSV:  average audience ratings
 - JSON: astronauts currently in space, by spacecraft
 - XLSX: student feedback text
 - TXT:  a plain-text version of Romeo and Juliet
 
 Paths (relative to repo root):
 
-INPUT FILE:  data/raw/2020_happiness.csv
+INPUT FILE:  data/raw/tmdb_movies.csv
 INPUT FILE:  data/raw/astros.json
 INPUT FILE:  data/raw/Feedback.xlsx
 INPUT FILE:  data/raw/romeo_and_juliet.txt
 
-OUTPUT FILE: data/processed/csv_ladder_score_stats.txt
+OUTPUT FILE: data/processed/csv_average_audience_ratings_stats.txt
 OUTPUT FILE: data/processed/json_astronauts_by_craft.txt
 OUTPUT FILE: data/processed/xlsx_feedback_github_count.txt
 OUTPUT FILE: data/processed/txt_summary.txt
@@ -85,26 +85,29 @@ PROCESSED_DIR: Final[Path] = Path("data") / "processed"
 # === CSV: SUMMARIZE A NUMERIC COLUMN ===
 
 CSV_PIPELINE_DESCRIPTION: Final[str] = r"""
-Read the world happiness CSV file,
-extract the selected numeric column,
+Read the TMDb movies CSV file,
+extract the average audience-rating column,
 calculate descriptive statistics,
 verify the results,
 and write the statistics to a text file.
 """
 
-CSV_INPUT: Final[Path] = RAW_DIR / "2020_happiness.csv"
-CSV_OUTPUT: Final[Path] = PROCESSED_DIR / "csv_standard_error_ladder_score_stats.txt"
-CSV_COLUMN: Final[str] = "Standard error of ladder score"  # CUSTOM
+CSV_INPUT: Final[Path] = RAW_DIR / "tmdb_movies.csv"
+CSV_OUTPUT: Final[Path] = PROCESSED_DIR / "tmdb_vote_average_stats.txt"
+CSV_COLUMN: Final[str] = "vote_average"
+
 WHY_CSV_COLUMN: Final[str] = r"""
-The standard error of ladder score indicates the uncertainty around each
-country's estimated happiness score. Summarizing this column helps show
-how precise the survey estimates are across countries.
+The vote_average column records the average audience rating for each movie.
+Summarizing this column shows the typical rating level and the range of
+ratings in the TMDb movie dataset.
 """
+
 CSV_ANALYST_INSIGHT: Final[str] = r"""
-The average standard error of ladder score was 0.05 across 153 countries.
-This suggests that the happiness estimates were generally fairly precise,
-although some countries had higher uncertainty, with a maximum standard
-error of 0.12.
+The 10,000 movies had an average vote_average of 6.31 out of 10.
+The standard deviation was 1.35, so ratings varied across the dataset.
+The full range from 0.00 to 10.00 shows that the dataset includes both
+very low- and very high-rated movies. Since this is a popular-movie dataset,
+the results may not represent every movie in the full TMDb collection.
 """
 
 # === JSON: COUNT RECORDS BY A CATEGORY ===
